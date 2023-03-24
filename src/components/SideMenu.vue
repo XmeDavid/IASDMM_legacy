@@ -19,6 +19,18 @@
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
                 </svg>
                 <span class="ml-3 transition duration-75 text-zinc-600 dark:text-zinc-400 group-hover:text-black dark:group-hover:text-white">Hinário</span>
+                <span class="grow"></span>
+                <span class="inline-flex items-center justify-center px-2 py-0.5 ml-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">OLD</span>
+              </router-link>
+            </li>
+            <li>
+              <router-link to="/hymn_new" class="group flex items-center p-2 text-base font-normal rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-800 hover:shadow-md hover:shadow-zinc-400 dark:hover:shadow-zinc-700">
+                <svg class="h-6 w-6 flex-shrink-0 transition duration-75 text-zinc-600 dark:text-zinc-400 group-hover:text-black dark:group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+                </svg>
+                <span class="ml-3 transition duration-75 text-zinc-600 dark:text-zinc-400 group-hover:text-black dark:group-hover:text-white">Hinário</span>
+                <span class="grow"></span>
+                <span class="inline-flex items-center justify-center px-2 py-0.5 ml-3 text-xs font-medium text-gray-50 bg-c-bluejay-dull rounded dark:bg-c-bluejay-dark dark:text-zinc-300 group-hover:bg-c-bluejay group-hover:text-white">NEW</span>
               </router-link>
             </li>
             <li> 

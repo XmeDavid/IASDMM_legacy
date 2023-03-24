@@ -3,6 +3,7 @@ import Program from "../views/Program.vue";
 import Settings from "../views/Settings.vue";
 import Bible from "../views/Bible.vue";
 import HymnOld from "../views/HymnOld.vue";
+import HymnNew from "../views/HymnNew.vue";
 
 const routes = [
     {
@@ -24,6 +25,11 @@ const routes = [
       path: '/hymn_old',
       name: 'HymnOld',
       component: HymnOld
+    },
+    {
+      path: '/hymn_new',
+      name: 'HymnNew',
+      component: HymnNew
     }
 ];
 
