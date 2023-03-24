@@ -1,0 +1,17 @@
+[
+    {
+      "abbrev": "ACF",
+      "name": "Almeida Corrigida Fiel",
+      "file": "acf.json"
+    },
+    {
+      "abbrev": "AA",
+      "name": "Almeida Atualizada",
+      "file": "aa.json"
+    },
+    {
+      "abbrev": "NVI",
+      "name": "Nova Versão Internacional",
+      "file": "nvi.json"
+    }
+  ]

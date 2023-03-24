@@ -1,0 +1,56 @@
+{
+    "legend": {
+        "text": [{
+            "attributes": {
+                "show": "0:21",
+                "hide": "",
+                "image": "HASD-423.jpg"
+            },
+            "text": "Que música celeste\nvem das vagas do mar;\nComove minh\u0027alma\nqual santa canção;"
+        }, {
+            "attributes": {
+                "show": "0:42",
+                "hide": "",
+                "image": "HASD-423.jpg"
+            },
+            "text": "São as vozes de anjos\nsoando no ar,\nA mim estão cantando\nceleste saudação."
+        }, {
+            "attributes": {
+                "show": "1:03",
+                "hide": "",
+                "image": "HASD-423.jpg"
+            },
+            "text": "Do Jordão nas lindas praias,\nme detenho a orar,\nE com fervente prece\nestendo a mão;"
+        }, {
+            "attributes": {
+                "show": "1:24",
+                "hide": "",
+                "image": "HASD-423.jpg"
+            },
+            "text": "Ó envia os Teus anjos,\namável Jesus!\nE deixa-me cantar, sim,\na santa canção."
+        }, {
+            "attributes": {
+                "show": "1:45",
+                "hide": "",
+                "image": "HASD-423.jpg"
+            },
+            "text": "Em forte borrasca\nque infunde pavor,\nNão tenho temor\nse Jesus me guiar,"
+        }, {
+            "attributes": {
+                "show": "2:06",
+                "hide": "",
+                "image": "HASD-423.jpg"
+            },
+            "text": "Pois a santa melodia\nenvolveu-me de amor;\nJunto ao coro dos anjos\ndesejo cantar."
+        }],
+        "attributes": {
+            "number": "423",
+            "image": "HASD-423.jpg",
+            "title": "Música Celeste",
+            "author": "HYMNS FOR GODS PECULIAR PEOPLE |  HYMNS AND TUNES",
+            "verse": "Lucas 2:13 e 14",
+            "music": "423.mp3",
+            "offset": "0:00"
+        }
+    }
+}
