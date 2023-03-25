@@ -167,15 +167,12 @@
         </ul>
         <div class="h-2">
         </div>
-        <hr />
-        <AudioPlayer />
       </div>
     </aside>
   </div>
 </template>
   
 <script>
-import AudioPlayer from "./AudioPlayer.vue";
 import DarkMode from "./DarkModeToggle.vue";
 import WindowToggle from "./ProjectedToggle.vue";
 import InfoButton from "./InfoButton.vue";
@@ -183,7 +180,6 @@ import InfoButton from "./InfoButton.vue";
 export default {
   name: "SideMenu",
   components: {
-    AudioPlayer,
     DarkMode,
     WindowToggle,
     InfoButton,

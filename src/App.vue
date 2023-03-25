@@ -1,16 +1,21 @@
 <template>
-  <div class="flex flex-row dark:bg-zinc-900 bg-zinc-50">
-    <SideMenu/>
-    <router-view class="h-screen w-full"></router-view>
+  <div class="flex flex-row dark:bg-zinc-900 bg-zinc-50 w-screen">
+    <SideMenu class="z-50"/>
+    <div class="flex flex-col h-screen w-full">
+      <router-view class="h-full w-full"></router-view>
+      <AudioPlayer/>
+    </div>
   </div>
 </template>
 
 <script>
 import SideMenu from "./components/SideMenu.vue";
+import AudioPlayer from "./components/AudioPlayer.vue";
 export default {
   name: "App",
   components: {
     SideMenu,
+    AudioPlayer
   },
   data(){
     return {

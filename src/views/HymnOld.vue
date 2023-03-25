@@ -1,6 +1,6 @@
 <template>
     <div class="w-full h-screen grid place-items-center p-8 ">
-            <div class="flex flex-col h-[85vh] w-[90%] border rounded-xl">
+            <div class="flex flex-col h-[75vh] w-[90%] border rounded-xl">
                 <div class="flex flex-row h-16">
                     <div class="p-2 m-2">
                         <span class="font-bold text-zinc-600 dark:text-zinc-300">Procurar</span>
