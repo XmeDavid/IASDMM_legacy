@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full h-screen grid place-items-center p-8 ">
+    <div class="w-full h-full grid place-items-center p-8 ">
             <div class="flex flex-col h-[75vh] w-[90%] border rounded-xl">
                 <div class="flex flex-row h-16">
                     <div class="p-2 m-2">
@@ -17,7 +17,7 @@
                     </div>
                     <input type="search" v-model="userInput" id="hymn-search" class="block w-full p-4 pl-10 rounded-lg font-semibold text-lg text-gray-900 dark:text-zinc-200 bg-neutral-200 dark:bg-zinc-800 placeholder-neutral-400 dark:placeholder-zinc-500" placeholder="Nome ou numero do hino" required>
                 </div>
-                <div class="overflow-y-scroll h-full ">
+                <div class="overflow-y-scroll h-full no-scrollbar">
                     <HymnLine v-for="hymn in hymnList" :key="hymn._id" :hymn="hymn"/>
                 </div>
             </div>
@@ -59,5 +59,4 @@ export default {
 }
 </script>
 <style>
-    
 </style>
