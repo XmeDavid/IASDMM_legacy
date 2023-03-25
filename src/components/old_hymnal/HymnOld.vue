@@ -24,8 +24,8 @@
     </div>
 </template>
 <script>
-import HymnLine from '../components/HymnLine.vue'
-import indexFile from '../assets/json/index.json'
+import HymnLine from './HymnLine.vue'
+import indexFile from '../../assets/json/index.json'
 export default {
     components:{
         HymnLine

@@ -157,7 +157,7 @@
         <ul>
           <li>
             <div class="flex flex-row mt-1">
-              <InfoButton />
+              <FullscreenToggle />
               <span class="grow" />
               <WindowToggle />
               <span class="grow" />
@@ -175,14 +175,14 @@
 <script>
 import DarkMode from "./DarkModeToggle.vue";
 import WindowToggle from "./ProjectedToggle.vue";
-import InfoButton from "./InfoButton.vue";
+import FullscreenToggle from "./FullscreenToggle.vue";
 
 export default {
   name: "SideMenu",
   components: {
     DarkMode,
     WindowToggle,
-    InfoButton,
+    FullscreenToggle,
   },
   methods:{
     

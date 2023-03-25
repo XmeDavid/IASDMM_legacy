@@ -4,11 +4,9 @@
     </div>
 </template>
 <script>
-import DarkMode from "../components/DarkModeToggle.vue";
 export default {
     name: "Settings",
     components: {
-        DarkMode
     }
 }
 </script>

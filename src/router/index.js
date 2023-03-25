@@ -1,9 +1,9 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import Program from "../views/Program.vue";
-import Settings from "../views/Settings.vue";
-import Bible from "../views/Bible.vue";
-import HymnOld from "../views/HymnOld.vue";
-import HymnNew from "../views/HymnNew.vue";
+import Program from "../components/program/Program.vue";
+import Settings from "../components/settings/Settings.vue";
+import Bible from "../components/bible/Bible.vue";
+import HymnOld from "../components/old_hymnal/HymnOld.vue";
+import HymnNew from "../components/new_hymnal/HymnNew.vue";
 
 const routes = [
     {
