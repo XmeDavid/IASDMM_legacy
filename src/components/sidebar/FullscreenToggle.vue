@@ -20,33 +20,20 @@
   </div>
 </template>
 <script>
-import { WebviewWindow } from '@tauri-apps/api/window'
+import { ref } from 'vue';
+import { invoke } from '@tauri-apps/api/tauri'
 export default {
   data() {
     return {
+      isFullscreen: false
     };
-  },
-  mounted() {
-    document.addEventListener("fullscreenchange", (event) => {
-      this.updateFullscreen()
-    })
-    
   },
   methods: {
     async fullscreenToggle(){
-      const mainWindow = WebviewWindow.getByLabel('main')
-      await mainWindow.setFullscreen(!(await this.isFullscreen))
-      this.isFullscreen
+      this.isFullscreen = !this.isFullscreen
+      await invoke('set_window_fullscreen', { fullscreen: this.isFullscreen })
     },
   },
-  computed: {
-      isFullscreen(){
-        const mainWindow = WebviewWindow.getByLabel('main')
-        mainWindow.isFullscreen().then((isFullscreen) => {
-          return isFullscreen
-        })
-      }
-  }
 };
 </script>
 <style>
