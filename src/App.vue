@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import SideMenu from "./components/SideMenu.vue";
-import AudioPlayer from "./components/AudioPlayer.vue";
+import SideMenu from "./components/sidebar/SideMenu.vue";
+import AudioPlayer from "./components/footer/AudioPlayer.vue";
 export default {
   name: "App",
   components: {

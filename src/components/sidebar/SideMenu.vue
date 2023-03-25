@@ -5,7 +5,7 @@
         <ul class="space-y-2">
           <img
             class="w-full"
-            src="../assets/svg/logo/7asd-high-resolution-logo-color-on-transparent-background.svg"
+            src="../../assets/svg/logo/7asd-high-resolution-logo-color-on-transparent-background.svg"
             alt="IASD MM"
           />
           <hr />

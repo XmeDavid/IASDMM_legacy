@@ -54,7 +54,7 @@
 
 <script>
 import {Howl, Howler} from 'howler';
-import index from "../assets/music/background/index.json"
+import index from "../../assets/music/background/index.json"
 export default {
   data(){
     return {
