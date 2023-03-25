@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-row h-12  m-2 rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-800 hover:shadow-md shadow-zinc-400 dark:shadow-zinc-700">
+    <div class="flex flex-row h-12 m-2 rounded-lg hover:bg-opacity-50 dark:hover:bg-opacity-70 hover:bg-gray-100 dark:hover:bg-zinc-800 bg-opacity-70 hover:shadow-md shadow-zinc-400 dark:shadow-zinc-700">
         <div @click="run" class="p-2 grow">
             <span class="m-2 font-bold text-xl transition duration-75 text-c-bluejay group-hover:text-black dark:group-hover:text-white">{{hymn.number}}</span>
             <span class="m-2 font-bold text-xl ml-2 mr-2">-</span>
