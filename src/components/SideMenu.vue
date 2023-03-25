@@ -55,6 +55,17 @@
               </router-link>
             </li>
           </ul>
+          <ul>
+            <li>
+              <div class="flex flex-row mt-1">
+                <InfoButton/>
+                <span class="grow"/>
+                <WindowToggle/>
+                <span class="grow"/>
+                <DarkMode/>
+              </div>
+            </li>
+          </ul>
           <div class="h-2"></div>
           <hr>
           <AudioPlayer/>
@@ -65,10 +76,17 @@
   
   <script>
   import AudioPlayer from "./AudioPlayer.vue"
+  import DarkMode from "./DarkModeToggle.vue"
+  import WindowToggle from "./ProjectedToggle.vue"
+  import InfoButton from "./InfoButton.vue"
+
   export default {
     name: "SideMenu",
     components:{
-      AudioPlayer
+      AudioPlayer,
+      DarkMode,
+      WindowToggle,
+      InfoButton,
     }
   };
   </script>

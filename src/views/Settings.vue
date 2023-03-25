@@ -1,7 +1,6 @@
 <template>
     <div>
         <h1>Settings</h1>
-        <DarkMode/>
     </div>
 </template>
 <script>
