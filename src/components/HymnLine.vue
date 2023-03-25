@@ -1,9 +1,9 @@
 <template>
-    <div class="flex flex-row h-12 m-2 rounded-lg hover:bg-opacity-50 dark:hover:bg-opacity-70 hover:bg-gray-100 dark:hover:bg-zinc-800 bg-opacity-70 hover:shadow-md shadow-zinc-400 dark:shadow-zinc-700">
-        <div @click="run" class="p-2 grow">
-            <span class="m-2 font-bold text-xl transition duration-75 text-c-bluejay group-hover:text-black dark:group-hover:text-white">{{hymn.number}}</span>
-            <span class="m-2 font-bold text-xl ml-2 mr-2">-</span>
-            <span class="m-2 font-bold text-xl transition duration-75 text-zinc-600 dark:text-zinc-400 group-hover:text-black dark:group-hover:text-white"> {{hymn.name}}</span>
+    <div class="flex flex-row h-12 m-2 rounded-lg hover:bg-opacity-60 dark:hover:bg-opacity-70 hover:bg-gray-100 dark:hover:bg-zinc-800 bg-opacity-70 hover:shadow-md shadow-zinc-400 dark:shadow-zinc-700">
+        <div @click="run" class="group p-2 grow">
+            <span class="m-2 font-bold text-xl transition duration-75 text-zinc-900 dark:text-zinc-200 group-hover:text-black dark:group-hover:text-white">{{hymn.number}}</span>
+            <span class="m-2 font-bold text-xl ml-2 mr-2 text-zinc-900 dark:text-zinc-200 group-hover:text-black dark:group-hover:text-white">-</span>
+            <span class="m-2 font-bold text-xl transition duration-75 text-zinc-800 dark:text-zinc-300 group-hover:text-black dark:group-hover:text-white"> {{hymn.name}}</span>
         </div>
         <button @click="options" class="text-c-bluejay rounded-lg h-12 w-12 grid place-items-center  hover:bg-zinc-400 hover:dark:bg-zinc-900 hover:shadow-inner hover:dark:shadow-zinc-800">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
