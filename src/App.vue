@@ -11,6 +11,9 @@
 <script>
 import SideMenu from "./components/sidebar/SideMenu.vue";
 import AudioPlayer from "./components/footer/AudioPlayer.vue";
+
+
+import { createDir, readDir, writeTextFile, readTextFile, BaseDirectory } from '@tauri-apps/api/fs';
 export default {
   name: "App",
   components: {
@@ -22,6 +25,17 @@ export default {
     }
   },
   methods: {
+    async loadConfig(){
+      // Load config from file
+      // Read the text file in the `$APPCONFIG/app.conf` path
+      //await createDir('iasd', { dir: BaseDirectory.AppLocalData, recursive: true });
+      //const entries = await readDir('iasd', { dir: BaseDirectory.AppLocalData, recursive: true });
+      //console.log(entries);
+      //console.log(BaseDirectory.AppLocalData)
+      //await writeTextFile('app.conf', 'file contents', { dir: BaseDirectory.AppData })
+      //const contents = await readTextFile('app.conf', { dir: BaseDirectory.AppData });
+      //console.log(contents);
+    },
   },
   computed:{
   },

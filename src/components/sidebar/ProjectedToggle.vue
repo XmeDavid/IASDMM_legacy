@@ -15,12 +15,42 @@
   </div>
 </template>
 <script>
+import { availableMonitors } from '@tauri-apps/api/window';
+import { invoke } from '@tauri-apps/api/tauri'
+import { writeTextFile, readTextFile, BaseDirectory } from '@tauri-apps/api/fs';
 export default {
   mounted() {
   },
   methods: {
-    toggleWindows(){
-      console.log("Windows!!")
+    async getMonitors() {
+      var id = -1
+      return (await availableMonitors()).map(monitor => {
+        id += 1
+        return {
+          id: id,
+          name: monitor.name,
+          scaleFactor: monitor.scaleFactor,
+          size: monitor.size,
+          position: monitor.position,
+          isProjector: false
+        }
+      })
+    },
+    async getMonitorsConfig(){
+      const contents = await readTextFile('app.conf', { dir: BaseDirectory.AppData });
+      return JSON.parse(contents).previousMonitors
+    },
+    async toggleWindows(){
+      const monitors = await this.getMonitors()
+      console.log(monitors)
+      const monitorsConfig = await this.getMonitorsConfig()
+      console.log(monitorsConfig)
+      monitors.forEach(monitor => {
+        var config = monitorsConfig.filter(monitorConfig => monitorConfig.name == monitor.name)[0]
+        if(config){
+          config.isProjector ? invoke('create_window', { windowLabel: `external_${config.id}`, title: "Projector Window", fullscreen: config.isFullscreen, x: 0, y: 0 }) : null
+        }
+      })
     }
   },
 };
