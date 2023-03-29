@@ -22,7 +22,7 @@
 <script>
 export default {
   mounted() {
-    this.switchTheme()
+    //this.switchTheme()
   },
   methods: {
     switchTheme(){
