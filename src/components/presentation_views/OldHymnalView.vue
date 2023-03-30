@@ -1,7 +1,7 @@
 <template lang="">
     <div>
-        This is poggers! {{data.title}}
-        {{data.content}}
+        <h1 class="text-2xl" >{{data.title}}</h1>
+        <h2 class="text-lg">{{ data.content }}</h2>
     </div>
 </template>
 <script>
@@ -11,9 +11,8 @@ export default {
             data: null
         }
     },
-    mounted() {
+    created() {
         this.data = JSON.parse(this.$router.currentRoute.value.params.data)
-        console.log(this.data)
     }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button @click="send">Main page to control the program</button>
+        <button @click="send">TitleScreen</button>
     </div>
 </template>
 <script>
@@ -9,9 +9,10 @@ export default {
     methods: {
         async send() {
             await invoke('send_data', { data: JSON.stringify({
-                routeName: 'OldHymnalView',
+                routeName: 'TitleView',
                 data: {
-                    title: 'Hymn 1',
+                    title: 'IASD',
+                    subTitle: 'Gandara dos Olivais',
                     content: 'This is a hymn'
                 }
             }), windowLabel: 'external_0'})
