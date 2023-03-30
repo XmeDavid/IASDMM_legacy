@@ -1,10 +1,11 @@
 import { createRouter, createWebHashHistory } from "vue-router";
+import PresentationView from "../PresentationView.vue";
 import Program from "../components/program/Program.vue";
 import Settings from "../components/settings/Settings.vue";
 import Bible from "../components/bible/Bible.vue";
 import HymnOld from "../components/old_hymnal/HymnOld.vue";
 import HymnNew from "../components/new_hymnal/HymnNew.vue";
-
+import OldHymnalView from "../components/presentation_views/OldHymnalView.vue"
 const routes = [
     {
       path: '/',
@@ -30,6 +31,16 @@ const routes = [
       path: '/hymn_new',
       name: 'HymnNew',
       component: HymnNew
+    },
+    {
+      path: '/presentation_view',
+      name: 'PresentationView',
+      component: PresentationView
+    },
+    {
+      path: '/presentation_view/old_hymnal',
+      name: 'OldHymnalView',
+      component: OldHymnalView,
     }
 ];
 
