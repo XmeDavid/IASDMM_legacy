@@ -3,26 +3,30 @@
 
 use tauri::Manager;
 
-// Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-/*#[tauri::command]
-fn greet(name: &str) -> String {
-    format!("Hello, {}! You've been greeted from Rust!", name)
-}*/
+#[tauri::command]
+fn send_data(app: tauri::AppHandle, window_label: &str, data: &str) {
+    app.get_window(window_label).unwrap().emit("presentation-data", data).unwrap();
+}
 
 #[tauri::command]
-async fn create_window(app: tauri::AppHandle, window_label: &str, title: &str, fullscreen: bool, x: f64, y: f64) -> tauri::Result<()> {
-    println!("Creating window");
+async fn create_window(app: tauri::AppHandle, window_label: &str, title: &str, url: &str, fullscreen: bool, x: f64, y: f64) -> tauri::Result<()> {
     tauri::WindowBuilder::new(
         &app,
-        window_label, /* the unique window label */
-        tauri::WindowUrl::External("https://tauri.app/".parse().unwrap())
+        window_label,
+        tauri::WindowUrl::App(url.into())
       )
       .title(title)
       .position(x,y)
       .fullscreen(fullscreen)
-      .focused(true)
+      .focused(false)
       .build()
       .expect("failed to build window");
+    Ok(())
+}
+
+#[tauri::command]
+async fn close_window(app: tauri::AppHandle, window_label: &str) -> tauri::Result<()> {
+    app.get_window(window_label).unwrap().close();
     Ok(())
 }
 
@@ -34,7 +38,12 @@ async fn set_window_fullscreen(app: tauri::AppHandle, fullscreen: bool){
 fn main() {
     tauri::Builder::default()
         //.plugin(tauri_plugin_window_state::Builder::default().build()) // Add the plugin to ensure windows open as they were last closed
-        .invoke_handler(tauri::generate_handler![create_window,set_window_fullscreen])
+        .invoke_handler(tauri::generate_handler![
+            create_window,
+            close_window,
+            set_window_fullscreen,
+            send_data
+        ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
