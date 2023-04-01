@@ -1,6 +1,6 @@
 <template>
     <div class="w-full h-full grid place-items-center p-8 bg-cover bg-[url('src/assets/img/old_hymnal_bg.png')]">
-            <div class="flex flex-col h-[75vh] w-[90%] border rounded-xl bg-zinc-200 dark:bg-black bg-opacity-40 dark:bg-opacity-40">
+            <div class="flex flex-col h-[74vh] w-[90%] border rounded-xl bg-zinc-200 dark:bg-black bg-opacity-40 dark:bg-opacity-40">
                 <div class="flex flex-row h-16">
                     <div class="p-2 m-2">
                         <span class="font-bold text-zinc-800 dark:text-zinc-300">Procurar</span>

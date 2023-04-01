@@ -1,11 +1,11 @@
 <template>
-  <footer class="flex flex-col h-min p-4 shadow-xl shadow-black dark:shadow-zinc-100 bg-zinc-50 dark:bg-zinc-900">
+  <footer class="grid grid-rows-2 p-4 shadow-xl shadow-black dark:shadow-zinc-100 bg-zinc-50 dark:bg-zinc-900">
 
     <div class="flex flex-row items-center justify-between">
       
       <p class="w-48 dark:text-slate-200 text-black truncate">{{musicName}}</p>
 
-      <span class="grow"/>
+      <span class="grow"></span>
 
       <span @click="previous">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 opacity-70 hover:opacity-100 text-zinc-800 dark:text-zinc-200 hover:dark:text-white hover:text-black">
@@ -21,31 +21,19 @@
         <svg :class="{'hidden' : !isPlaying}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 opacity-70 hover:opacity-100 text-zinc-800 dark:text-zinc-200 hover:dark:text-white hover:text-black">
           <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />
         </svg>
-
-
       </span>
 
-      <!--span @click="stop" >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 opacity-70 hover:opacity-100 text-zinc-800 dark:text-zinc-200 hover:dark:text-white hover:text-black">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 7.5A2.25 2.25 0 017.5 5.25h9a2.25 2.25 0 012.25 2.25v9a2.25 2.25 0 01-2.25 2.25h-9a2.25 2.25 0 01-2.25-2.25v-9z" />
-        </svg>
-      </span-->
-      
       <span @click="next" >
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 opacity-70 hover:opacity-100 text-zinc-800 dark:text-zinc-200 hover:dark:text-white hover:text-black">
           <path stroke-linecap="round" stroke-linejoin="round" d="M3 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062A1.125 1.125 0 013 16.81V8.688zM12.75 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062a1.125 1.125 0 01-1.683-.977V8.688z" />
         </svg>
       </span>
 
-      
-      
-      <span class="grow"/>
+      <span class="grow"></span>
 
       <input type="range" class="appearance-none h-1 w-48 rounded-lg accent-c-bluejay bg-zinc-300 dark:bg-zinc-700 shadow-inner" v-model="volume" @change="changeVolume">
       
     </div>
-      
-    <!--source v-for="music in index" :key="music.id" :src="`../assets/music/background/${music.id}.mp3`" type="audio/mpeg"-->
     
     <input id="progressBar" type="range" v-model="currentMusicProgress" @change="changeProgress" class="appearance-none mt-4 h-4 w-full rounded-sm overflow-hidden bg-zinc-200 shadow-inner shadow-zinc-400  dark:bg-zinc-700 dark:shadow-zinc-800"/>
   

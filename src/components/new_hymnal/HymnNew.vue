@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <div class="dark:text-white">
+        Hey
     </div>
 </template>
 <script>

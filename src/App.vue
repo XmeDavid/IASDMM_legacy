@@ -1,8 +1,9 @@
 <template>
+<div>
   <div v-if="!isPresentationView && !isNoteView" class="flex flex-row dark:bg-zinc-900 bg-zinc-50 w-screen">
     <SideMenu class="z-50"/>
     <div class="flex flex-col h-screen w-full">
-      <router-view class="h-full w-full z-0"></router-view>
+      <router-view class="max-h-full grow w-full z-0"></router-view>
       <AudioPlayer class="z-40"/>
     </div>
   </div>
@@ -12,6 +13,7 @@
   <div v-if="isNoteView" class="w-screen h-screen">
       <h1>Notes here</h1>
   </div>
+</div>
 </template>
 
 <script>
