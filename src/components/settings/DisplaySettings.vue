@@ -24,6 +24,7 @@ export default {
     },
     data() {
         return {
+            config: {},
             monitors: null
         }
     },
@@ -45,8 +46,8 @@ export default {
         },
         async load(){
             await this.getMonitors()
-            const contents = await readTextFile('app.conf', { dir: BaseDirectory.AppData });
-            const previousMonitors = JSON.parse(contents).previousMonitors
+            this.config = JSON.parse(await readTextFile('app.conf', { dir: BaseDirectory.AppData }))
+            const previousMonitors = this.config.previousMonitors
             this.monitors.forEach(monitor => {
                 previousMonitors.forEach(previousMonitor => {
                     if (monitor.id == previousMonitor.id){
@@ -57,12 +58,12 @@ export default {
             });
         },
         async save(){
-            let json_str = JSON.stringify({previousMonitors: this.monitors})
+            this.config.previousMonitors = this.monitors
+            let json_str = JSON.stringify(this.config)
             await writeTextFile('app.conf', json_str, { dir: BaseDirectory.AppData })
         }
-    },
+    },  
     mounted() {
-        //this.getMonitors()
         this.load()
     },
     beforeUnmount() {

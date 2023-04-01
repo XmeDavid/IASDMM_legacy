@@ -2,8 +2,8 @@
   <div v-if="!isPresentationView && !isNoteView" class="flex flex-row dark:bg-zinc-900 bg-zinc-50 w-screen">
     <SideMenu class="z-50"/>
     <div class="flex flex-col h-screen w-full">
-      <router-view class="h-full w-full"></router-view>
-      <AudioPlayer/>
+      <router-view class="h-full w-full z-0"></router-view>
+      <AudioPlayer class="z-40"/>
     </div>
   </div>
   <div v-if="isPresentationView" >

@@ -32,7 +32,8 @@
           "$APPDATA",
           "$APPLOCALDATA",
           "$APPLOCALDATA/app.conf",
-          "$APPDATA/app.conf"
+          "$APPDATA/app.conf",
+          "$USER/*"
         ]
       }
     },

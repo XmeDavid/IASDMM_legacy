@@ -49,8 +49,8 @@ export default {
       })
     },
     async getMonitorsConfig(){
-      const contents = await readTextFile('app.conf', { dir: BaseDirectory.AppData });
-      return JSON.parse(contents).previousMonitors
+      const config = JSON.parse(await readTextFile('app.conf', { dir: BaseDirectory.AppData }))
+      return config.previousMonitors
     },
     async toggleWindows(){
       if(this.isProjected){
@@ -68,9 +68,7 @@ export default {
     },
     async projectWindows(){
       const monitors = await this.getMonitors()
-      console.log(monitors)
       const monitorsConfig = await this.getMonitorsConfig()
-      console.log(monitorsConfig)
       monitors.forEach(monitor => {
         var config = monitorsConfig.filter(monitorConfig => monitorConfig.name == monitor.name)[0]
         if(config){
