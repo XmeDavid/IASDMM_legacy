@@ -29,7 +29,7 @@
                 />
               </svg>
               <span
-                class="ml-3 transition duration-75 text-zinc-600 dark:text-zinc-400 group-hover:text-black dark:group-hover:text-white"
+                class="ml-3 transition duration-75 text-zinc-600 dark:text-zinc-400 group-hover:text-black dark:group-hover:text-white select-none"
                 >Programa</span
               >
             </router-link>
@@ -54,12 +54,12 @@
                 />
               </svg>
               <span
-                class="ml-3 transition duration-75 text-zinc-600 dark:text-zinc-400 group-hover:text-black dark:group-hover:text-white"
+                class="ml-3 transition duration-75 text-zinc-600 dark:text-zinc-400 group-hover:text-black dark:group-hover:text-white select-none"
                 >Hinário</span
               >
               <span class="grow"></span>
               <span
-                class="inline-flex items-center justify-center px-2 py-0.5 ml-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400"
+                class="inline-flex items-center justify-center px-2 py-0.5 ml-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400 select-none"
                 >OLD</span
               >
             </router-link>
@@ -84,12 +84,12 @@
                 />
               </svg>
               <span
-                class="ml-3 transition duration-75 text-zinc-600 dark:text-zinc-400 group-hover:text-black dark:group-hover:text-white"
+                class="ml-3 transition duration-75 text-zinc-600 dark:text-zinc-400 group-hover:text-black dark:group-hover:text-white select-none"
                 >Hinário</span
               >
               <span class="grow"></span>
               <span
-                class="inline-flex items-center justify-center px-2 py-0.5 ml-3 text-xs font-medium text-gray-50 bg-c-bluejay-dull rounded dark:bg-c-bluejay-dark dark:text-zinc-300 group-hover:bg-c-bluejay group-hover:text-white"
+                class="inline-flex items-center justify-center px-2 py-0.5 ml-3 text-xs font-medium text-gray-50 bg-c-bluejay-dull rounded dark:bg-c-bluejay-dark dark:text-zinc-300 group-hover:bg-c-bluejay group-hover:text-white select-none"
                 >NEW</span
               >
             </router-link>
@@ -114,7 +114,7 @@
                 />
               </svg>
               <span
-                class="ml-3 transition duration-75 text-zinc-600 dark:text-zinc-400 group-hover:text-black dark:group-hover:text-white"
+                class="ml-3 transition duration-75 text-zinc-600 dark:text-zinc-400 group-hover:text-black dark:group-hover:text-white select-none"
                 >Biblia</span
               >
             </router-link>
@@ -147,7 +147,7 @@
                 />
               </svg>
               <span
-                class="ml-3 transition duration-75 text-zinc-600 dark:text-zinc-400 group-hover:text-black dark:group-hover:text-white"
+                class="ml-3 transition duration-75 text-zinc-600 dark:text-zinc-400 group-hover:text-black dark:group-hover:text-white select-none"
               >
                 Settings</span
               >
@@ -158,9 +158,9 @@
           <li>
             <div class="flex flex-row mt-1">
               <FullscreenToggle />
-              <span class="grow" />
+              <span class="grow"></span>
               <WindowToggle />
-              <span class="grow" />
+              <span class="grow"></span>
               <DarkMode />
             </div>
           </li>

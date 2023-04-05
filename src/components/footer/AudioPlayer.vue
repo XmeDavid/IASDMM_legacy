@@ -3,7 +3,7 @@
 
     <div class="flex flex-row items-center justify-between relative">
       
-      <p class="w-3/8 dark:text-slate-200 text-black truncate">{{ musicName }}</p>
+      <p class="w-3/8 dark:text-slate-200 text-black truncate select-none">{{ musicName }}</p>
 
       <div class="w-48 flex flex-row absolute left-1/2 -translate-x-1/2">
       <span @click="previous">

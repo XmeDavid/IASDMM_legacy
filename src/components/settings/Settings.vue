@@ -1,7 +1,7 @@
 <template>
     <div class="p-4 grid grid-cols-2 h-full">
         <div class="w-full flex flex-row">
-            <h1 class="text-2xl text-zinc-800 dark:text-zinc-200">Settings</h1>
+            <h1 class="text-2xl text-zinc-800 dark:text-zinc-200 select-none">Settings</h1>
             <hr>
             <DisplaySettings ref="displaySettingsRef"/>
             <hr>

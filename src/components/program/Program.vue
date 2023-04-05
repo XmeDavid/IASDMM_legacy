@@ -2,7 +2,7 @@
     <div class="flex flex-row no-scrollbar">
         <div class="w-64 flex flex-col p-2 z-30 shadow-lg shadow-black dark:shadow-zinc-600 flex-shrink-0">
             <div class="flex flex-row items-center pl-2 pr-2 relative transition-all duration-300">
-                <span class="w-60 text-sm text-zinc-700 dark:text-zinc-400 whitespace-nowrap"> As Minhas Apresentações</span>
+                <span class="w-60 text-sm text-zinc-700 dark:text-zinc-400 whitespace-nowrap select-none"> As Minhas Apresentações</span>
                 <div class="grow"></div>
                 <button @click="()=>{_createPresentationToggle = !_createPresentationToggle}" class="p-2 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-zinc-800 hover:shadow-md hover:shadow-zinc-400 dark:hover:shadow-zinc-700">
                     <svg :class="[{'': !_createPresentationToggle, 'rotate-45': _createPresentationToggle}]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 transition duration-300 text-zinc-700 dark:text-zinc-200 group-hover:text-black dark:group-hover:text-white">
@@ -14,7 +14,7 @@
             <div :class="['transition-max  duration-300 overflow-hidden', {'h-0': !_createPresentationToggle, 'h-16': _createPresentationToggle}]">
                 <div class="relative z-0">
                     <input type="text" id="floating_standard" class="mt-2 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
-                    <label for="floating_standard" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nova Apresentação</label>
+                    <label for="floating_standard" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 select-none">Nova Apresentação</label>
                     <button @click="()=>{_createPresentationToggle = !_createPresentationToggle}" class="absolute z-50 top-0 right-2 p-2 rounded-lg transition duration-300 hover:bg-gray-100 dark:hover:bg-zinc-800 hover:shadow-md hover:shadow-zinc-400 dark:hover:shadow-zinc-700">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 transition duration-75 text-zinc-700 dark:text-zinc-200 group-hover:text-black dark:group-hover:text-white">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -30,7 +30,7 @@
                     class="z-10 mb-2 flex items-center text-base font-normal rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-800 hover:shadow-md hover:shadow-zinc-400 dark:hover:shadow-zinc-700"
                 >
                     <span
-                    class="ml-3 m-2 transition duration-75 text-zinc-700 dark:text-zinc-200 font-medium"
+                    class="ml-3 m-2 transition duration-75 text-zinc-700 dark:text-zinc-200 font-medium select-none"
                     >{{ presentation.name }}</span>
                     <span class="grow"></span>
                     <button @click.stop="deletePresentation(presentation)" class="p-2 group rounded-lg z-20 hover:shadow-inner hover:shadow-red-600 hover:bg-red-400">

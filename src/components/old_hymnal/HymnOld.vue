@@ -3,11 +3,11 @@
             <div class="flex flex-col h-[74vh] w-[90%] border rounded-xl bg-zinc-200 dark:bg-black bg-opacity-40 dark:bg-opacity-40">
                 <div class="flex flex-row h-16">
                     <div class="p-2 m-2">
-                        <span class="font-bold text-zinc-800 dark:text-zinc-300">Procurar</span>
+                        <span class="font-bold text-zinc-800 dark:text-zinc-300 select-none">Procurar</span>
                     </div>
                     <div class="grow"></div>
                     <router-link to="/hymn_new" class="group p-2 m-2 rounded-lg hover:bg-opacity-70 hover:dark:bg-opacity-70 hover:bg-neutral-200 dark:hover:bg-zinc-800 hover:shadow-md hover:shadow-zinc-400 dark:hover:shadow-zinc-700">
-                        <span class="font-bold transition duration-75 text-zinc-800 dark:text-zinc-300 group-hover:text-black dark:group-hover:text-white">Mudar para o Hinário Novo</span>
+                        <span class="font-bold transition duration-75 text-zinc-800 dark:text-zinc-300 group-hover:text-black dark:group-hover:text-white select-none">Mudar para o Hinário Novo</span>
                     </router-link>
                 </div>
             

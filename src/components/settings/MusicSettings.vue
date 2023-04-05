@@ -1,10 +1,10 @@
 <template>
     <div class="flex flex-row items-center">
         <div class="grid grid-rows-2 grow p-2 h-16">
-            <label for="musicPath" class="whitespace-nowrap text-zinc-700 dark:text-zinc-300">Select folder for audio player</label>
-            <input id="musicPath" type="text" disabled :value="path" class="p-1 rounded-md bg-stone-500 grow">
+            <label for="musicPath" class="whitespace-nowrap select-none text-zinc-700 dark:text-zinc-300">Select folder for audio player</label>
+            <input id="musicPath" type="text" disabled :value="path" class="p-1 rounded-md bg-stone-300 dark:bg-stone-700 text-black dark:text-zinc-100 grow">
         </div>
-        <button @click="selectPath" class="bg-c-bluejay-light  rounded-lg w-20  h-12"> Select </button>
+        <button @click="selectPath" class="bg-c-bluejay-light dark:bg-c-bluejay-dark hover:bg-c-bluejay dark:hover:bg-c-bluejay rounded-lg w-20 h-12 font-medium text-white"> Select </button>
     </div>
 </template>
 <script>
