@@ -1,12 +1,11 @@
 <template>
   <footer class="grid grid-rows-2 p-4 shadow-xl shadow-black dark:shadow-zinc-100 bg-zinc-50 dark:bg-zinc-900">
 
-    <div class="flex flex-row items-center justify-between">
+    <div class="flex flex-row items-center justify-between relative">
       
-      <p class="w-48 dark:text-slate-200 text-black truncate">{{ musicName }}</p>
+      <p class="w-3/8 dark:text-slate-200 text-black truncate">{{ musicName }}</p>
 
-      <span class="grow"></span>
-
+      <div class="w-48 flex flex-row absolute left-1/2 -translate-x-1/2">
       <span @click="previous">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 opacity-70 hover:opacity-100 text-zinc-800 dark:text-zinc-200 hover:dark:text-white hover:text-black">
           <path stroke-linecap="round" stroke-linejoin="round" d="M21 16.811c0 .864-.933 1.405-1.683.977l-7.108-4.062a1.125 1.125 0 010-1.953l7.108-4.062A1.125 1.125 0 0121 8.688v8.123zM11.25 16.811c0 .864-.933 1.405-1.683.977l-7.108-4.062a1.125 1.125 0 010-1.953L9.567 7.71a1.125 1.125 0 011.683.977v8.123z" />
@@ -28,8 +27,8 @@
           <path stroke-linecap="round" stroke-linejoin="round" d="M3 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062A1.125 1.125 0 013 16.81V8.688zM12.75 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062a1.125 1.125 0 01-1.683-.977V8.688z" />
         </svg>
       </span>
+      </div>
 
-      <span class="grow"></span>
 
       <input type="range" class="appearance-none h-1 w-48 rounded-lg accent-c-bluejay bg-zinc-300 dark:bg-zinc-700 shadow-inner" v-model="volume" @change="changeVolume">
       
@@ -45,6 +44,7 @@ import {Howl, Howler} from 'howler';
 import index from "../../assets/music/background/index.json"
 import { readDir, readTextFile, BaseDirectory } from '@tauri-apps/api/fs';
 import { convertFileSrc } from '@tauri-apps/api/tauri';
+import { emit, listen } from '@tauri-apps/api/event'
 export default {
   data(){
     return {
@@ -55,10 +55,15 @@ export default {
       currentMusicProgress: 0,
       updateProgressBarInterval: null,
       musicList: [],
+      listener: null,
     }
   },
   methods:{
     async load(){
+      if(this.music != null){
+        this.music.stop()
+      }
+      this.selectedMusic = 0
       this.config = JSON.parse(await readTextFile('app.conf', { dir: BaseDirectory.AppData }))
       let path = this.config.backgroundMusicPath
       var i = 0;
@@ -66,6 +71,7 @@ export default {
         element.id = i++
         return element
       })
+      this.isPlaying = false
       this.loadMusic()
     },
     loadMusic(){
@@ -141,7 +147,12 @@ export default {
         clearInterval(this.updateProgressBarInterval)
         this.updateProgressBarInterval = null
       }
-    }
+    },
+    async listen() {
+            this.listener = await listen('reload-music', (event) => {
+                this.load()
+            })
+        }
   },
   computed: {
     musicName(){
@@ -159,6 +170,7 @@ export default {
   },
   mounted(){
     this.load()
+    this.listen()
   }
 }
 </script>

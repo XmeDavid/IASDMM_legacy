@@ -8,9 +8,11 @@
     </div>
 </template>
 <script>
+import {ref} from 'vue';    
 import { open } from '@tauri-apps/api/dialog';
 import { audioDir } from '@tauri-apps/api/path';
 import { writeTextFile, readTextFile, BaseDirectory } from '@tauri-apps/api/fs';
+import { emit, listen } from '@tauri-apps/api/event'
 export default {
     name: "DisplaySettings",
     components: {
@@ -42,6 +44,9 @@ export default {
             this.config.backgroundMusicPath = this.path
             let json_str = JSON.stringify(this.config)
             await writeTextFile('app.conf', json_str, { dir: BaseDirectory.AppData })
+            emit('reload-music', {
+                reload: true,
+            })
         }
     },  
     mounted() {
