@@ -1,21 +1,30 @@
 <template>
-    <div class="p-4">
-        <h1 class="text-2xl text-zinc-800 dark:text-zinc-200">Settings</h1>
-        <div class="w-1/2">
+    <div class="p-4 grid grid-cols-2 h-full">
+        <div class="w-full flex flex-row">
+            <h1 class="text-2xl text-zinc-800 dark:text-zinc-200">Settings</h1>
             <hr>
             <DisplaySettings ref="displaySettingsRef"/>
             <hr>
         </div>
-        <button @click="save">Save</button>
+        <div class="w-full flex flex-col">
+            <MusicSettings ref="musicSettingsRef"/>
+            <div class="grow"></div>
+            <div class="flex flex-row">
+                <div class="grow"></div>
+                <button @click="save" class="rounded-lg py-2 px-4 bg-c-tree-frog font-semibold  text-white">Save</button>
+            </div>
+        </div>
     </div>
 </template>
 <script>
 import DisplaySettings from "./DisplaySettings.vue"
+import MusicSettings from "./MusicSettings.vue";
 import {ref} from 'vue';    
 export default {
     name: "Settings",
     components: {
-        DisplaySettings
+        DisplaySettings,
+        MusicSettings
     },
     data(){
         return {
@@ -24,6 +33,7 @@ export default {
     methods: {
         save(){
             this.$refs.displaySettingsRef.save()
+            this.$refs.musicSettingsRef.save()
         }
     },
 }

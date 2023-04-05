@@ -3,7 +3,7 @@
 
     <div class="flex flex-row items-center justify-between">
       
-      <p class="w-48 dark:text-slate-200 text-black truncate">{{musicName}}</p>
+      <p class="w-48 dark:text-slate-200 text-black truncate">{{ musicName }}</p>
 
       <span class="grow"></span>
 
@@ -43,27 +43,43 @@
 <script>
 import {Howl, Howler} from 'howler';
 import index from "../../assets/music/background/index.json"
+import { readDir, readTextFile, BaseDirectory } from '@tauri-apps/api/fs';
+import { convertFileSrc } from '@tauri-apps/api/tauri';
 export default {
   data(){
     return {
-      selectedMusic: 1,
+      selectedMusic: 0,
       volume: 50,
       music: null,
       isPlaying: false,
       currentMusicProgress: 0,
       updateProgressBarInterval: null,
+      musicList: [],
     }
   },
   methods:{
-    load(){
+    async load(){
+      this.config = JSON.parse(await readTextFile('app.conf', { dir: BaseDirectory.AppData }))
+      let path = this.config.backgroundMusicPath
+      var i = 0;
+      this.musicList = (await readDir(path)).map(element=>{
+        element.id = i++
+        return element
+      })
+      this.loadMusic()
+    },
+    loadMusic(){
+      let _music = this.musicList.find(element => element.id == this.selectedMusic)
+      let musicURL = convertFileSrc(_music.path)
+      console.log(musicURL)
       this.music = new Howl({
-        src: [`src/assets/music/background/${this.selectedMusic}.mp3`],
+        src: [musicURL],
         onend: this.next
       });
     },
     playPause(){
       if(this.music == null){
-        this.load()
+        this.loadMusic()
       }
       this.isPlaying = !this.isPlaying
       if(this.isPlaying){
@@ -95,7 +111,7 @@ export default {
         this.selectedMusic = 1
       }
       this.music.stop()
-      this.load()
+      this.loadMusic()
       this.currentMusicProgress = 0
       if(this.isPlaying){
         this.play()
@@ -107,7 +123,7 @@ export default {
         this.selectedMusic = index.length
       }
       this.music.stop()
-      this.load()
+      this.loadMusic()
       this.currentMusicProgress = 0
       if(this.isPlaying){
         this.play()
@@ -129,7 +145,16 @@ export default {
   },
   computed: {
     musicName(){
-      return index[this.selectedMusic-1].name
+      if(this.musicList == undefined){
+        console.log("Erorr!")
+        return "Nothing Playing..."
+      }
+      let _music = this.musicList.find(e => e.id == this.selectedMusic)
+      if(_music == undefined || _music == null){
+        return "Nothing Playing..."
+      } 
+      console.log(_music)
+      return _music.name
     },
   },
   mounted(){
