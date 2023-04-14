@@ -4,7 +4,7 @@
       type="button"
       @click="toggleWindows"
       :class="{
-        'bg-c-bluejay hover:bg-c-bluejay-light': isProjected,
+        'bg-bluejay-600 hover:bg-bluejay-500': isProjected,
         'hover:bg-gray-100 dark:hover:bg-zinc-800  ': !isProjected
       }"
       class="text-sm group h-12 w-12 rounded-lg p-2.5 hover:shadow-md hover:shadow-zinc-400 dark:hover:shadow-zinc-700"

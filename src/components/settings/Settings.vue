@@ -11,7 +11,7 @@
             <div class="grow"></div>
             <div class="flex flex-row">
                 <div class="grow"></div>
-                <button @click="save" class="rounded-lg py-2 px-4 bg-c-tree-frog font-semibold  text-white">Save</button>
+                <button @click="save" class="rounded-lg py-2 px-4 bg-tree-frog-700  font-semibold  text-white hover:bg-tree-frog-600">Save</button>
             </div>
         </div>
     </div>

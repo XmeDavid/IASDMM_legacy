@@ -12,7 +12,7 @@
           <li>
             <router-link
               to="/"
-              :class="{['shadow-sm shadow-c-bluejay']: ('/' == currentTabPath)}"
+              :class="{['shadow-sm shadow-bluejay-600']: ('/' == currentTabPath)}"
               class="group flex items-center p-2 text-base font-normal rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-800 hover:shadow-md hover:shadow-zinc-400 dark:hover:shadow-zinc-700"
             >
               <svg
@@ -37,7 +37,7 @@
           <li>
             <router-link
               to="/hymn_old"
-              :class="{[' shadow-sm shadow-c-bluejay']: ('/hymn_old' == currentTabPath)}"
+              :class="{[' shadow-sm shadow-bluejay-600']: ('/hymn_old' == currentTabPath)}"
               class="group flex items-center p-2 text-base font-normal rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-800 hover:shadow-md hover:shadow-zinc-400 dark:hover:shadow-zinc-700"
             >
               <svg
@@ -59,7 +59,7 @@
               >
               <span class="grow"></span>
               <span
-                class="inline-flex items-center justify-center px-2 py-0.5 ml-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400 select-none"
+                class="inline-flex items-center justify-center px-2 py-0.5 ml-3 text-xs font-medium rounded text-gray-50 dark:bg-night-800 bg-night-400 dark:text-zinc-300 group-hover:bg-night-600 group-hover:text-white select-none"
                 >OLD</span
               >
             </router-link>
@@ -67,7 +67,7 @@
           <li>
             <router-link
               to="/hymn_new"
-              :class="{[' shadow-sm shadow-c-bluejay']: ('/hymn_new' == currentTabPath)}"
+              :class="{[' shadow-sm shadow-bluejay-600']: ('/hymn_new' == currentTabPath)}"
               class="group flex items-center p-2 text-base font-normal rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-800 hover:shadow-md hover:shadow-zinc-400 dark:hover:shadow-zinc-700"
             >
               <svg
@@ -89,7 +89,7 @@
               >
               <span class="grow"></span>
               <span
-                class="inline-flex items-center justify-center px-2 py-0.5 ml-3 text-xs font-medium text-gray-50 bg-c-bluejay-dull rounded dark:bg-c-bluejay-dark dark:text-zinc-300 group-hover:bg-c-bluejay group-hover:text-white select-none"
+                class="inline-flex items-center justify-center px-2 py-0.5 ml-3 text-xs font-medium rounded text-gray-50 dark:bg-bluejay-800 bg-bluejay-500 dark:text-zinc-300 group-hover:bg-bluejay-600 group-hover:text-white select-none"
                 >NEW</span
               >
             </router-link>
@@ -97,7 +97,7 @@
           <li>
             <router-link
               to="/bible"
-              :class="{[' shadow-sm shadow-c-bluejay']: ('/bible' == currentTabPath)}"
+              :class="{[' shadow-sm shadow-bluejay-600']: ('/bible' == currentTabPath)}"
               class="group flex items-center p-2 text-base font-normal rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-800 hover:shadow-md hover:shadow-zinc-400 dark:hover:shadow-zinc-700"
             >
               <svg
@@ -125,7 +125,7 @@
           <li>
             <router-link
               to="/settings"
-              :class="{[' shadow-sm shadow-c-bluejay']: ('/settings' == currentTabPath)}"
+              :class="{[' shadow-sm shadow-bluejay-600']: ('/settings' == currentTabPath)}"
               class="group flex items-center p-2 text-base font-normal rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-800 hover:shadow-md hover:shadow-zinc-400 dark:hover:shadow-zinc-700"
             >
               <svg

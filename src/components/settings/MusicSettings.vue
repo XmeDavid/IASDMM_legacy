@@ -4,7 +4,7 @@
             <label for="musicPath" class="whitespace-nowrap select-none text-zinc-700 dark:text-zinc-300">Select folder for audio player</label>
             <input id="musicPath" type="text" disabled :value="path" class="p-1 rounded-md bg-stone-300 dark:bg-stone-700 text-black dark:text-zinc-100 grow">
         </div>
-        <button @click="selectPath" class="bg-c-bluejay-light dark:bg-c-bluejay-dark hover:bg-c-bluejay dark:hover:bg-c-bluejay rounded-lg w-20 h-12 font-medium text-white"> Select </button>
+        <button @click="selectPath" class="bg-bluejay-500 dark:bg-bluejay-700 hover:bg-bluejay-600 dark:hover:bg-bluejay-600 rounded-lg w-20 h-12 font-medium text-white"> Select </button>
     </div>
 </template>
 <script>

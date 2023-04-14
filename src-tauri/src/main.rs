@@ -26,13 +26,12 @@ async fn create_window(app: tauri::AppHandle, window_label: &str, title: &str, u
 
 #[tauri::command]
 async fn close_window(app: tauri::AppHandle, window_label: &str) -> tauri::Result<()> {
-    app.get_window(window_label).unwrap().close();
-    Ok(())
+    return app.get_window(window_label).unwrap().close();
 }
 
 #[tauri::command]
-async fn set_window_fullscreen(app: tauri::AppHandle, fullscreen: bool){
-    app.get_window("main").unwrap().set_fullscreen(fullscreen);
+async fn set_window_fullscreen(app: tauri::AppHandle, fullscreen: bool) -> tauri::Result<()>{
+    return app.get_window("main").unwrap().set_fullscreen(fullscreen);
 }
 
 fn main() {

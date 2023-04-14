@@ -30,7 +30,7 @@
       </div>
 
 
-      <input type="range" class="appearance-none h-1 w-48 rounded-lg accent-c-bluejay bg-zinc-300 dark:bg-zinc-700 shadow-inner" v-model="volume" @change="changeVolume">
+      <input type="range" class="appearance-none h-1 w-48 rounded-lg accent-bluejay-600  bg-zinc-300 dark:bg-zinc-700 shadow-inner" v-model="volume" @change="changeVolume">
       
     </div>
     
