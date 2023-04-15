@@ -13,9 +13,9 @@
             <hr class="my-1">
             <div :class="['transition-max  duration-300 overflow-hidden', {'h-0': !_createPresentationToggle, 'h-16': _createPresentationToggle}]">
                 <div class="relative z-0">
-                    <input type="text" id="floating_standard" class="mt-2 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
-                    <label for="floating_standard" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 select-none">Nova Apresentação</label>
-                    <button @click="()=>{_createPresentationToggle = !_createPresentationToggle}" class="absolute z-50 top-0 right-2 p-2 rounded-lg transition duration-300 hover:bg-gray-100 dark:hover:bg-zinc-800 hover:shadow-md hover:shadow-zinc-400 dark:hover:shadow-zinc-700">
+                    <input type="text" id="new_presentation_name" v-model="newPresentationName" class="mt-2 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" />
+                    <label for="new_presentation_name" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 select-none">Nova Apresentação</label>
+                    <button @click="newSlide" class="absolute z-50 top-0 right-2 p-2 rounded-lg transition duration-300 hover:bg-gray-100 dark:hover:bg-zinc-800 hover:shadow-md hover:shadow-zinc-400 dark:hover:shadow-zinc-700">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 transition duration-75 text-zinc-700 dark:text-zinc-200 group-hover:text-black dark:group-hover:text-white">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                         </svg>
@@ -70,8 +70,8 @@ export default {
         return {
             config: null,
             presentations: [],
-            _createPresentationToggle: false
-
+            _createPresentationToggle: false,
+            newPresentationName: ""
         }
     },
     computed: {
@@ -81,14 +81,19 @@ export default {
     },
     methods: {
         newSlide(){
-            console.log("Heyyy!!")
+            this.presentations.push({
+                name: this.newPresentationName,
+                slides: []
+            })
+            this.newPresentationName = ""
+            this._createPresentationToggle = !this._createPresentationToggle
         },
         selectPresentation(presentation){
             this.presentations.forEach(p => p.selected == true ? p.selected = false : null)
             presentation.selected = !presentation.selected
         },
         deletePresentation(presentation){
-            console.log(presentation)
+            this.presentations = this.presentations.filter(p => p != presentation)
         },
         async load(){
             this.config = JSON.parse(await readTextFile('app.conf', { dir: BaseDirectory.AppData }))
