@@ -15,7 +15,7 @@
                 <div class="relative z-0">
                     <input type="text" id="new_presentation_name" v-model="newPresentationName" class="mt-2 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" />
                     <label for="new_presentation_name" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 select-none">Nova Apresentação</label>
-                    <button @click="newSlide" class="absolute z-50 top-0 right-2 p-2 rounded-lg transition duration-300 hover:bg-gray-100 dark:hover:bg-zinc-800 hover:shadow-md hover:shadow-zinc-400 dark:hover:shadow-zinc-700">
+                    <button @click="newPresentation" class="absolute z-50 top-0 right-2 p-2 rounded-lg transition duration-300 hover:bg-gray-100 dark:hover:bg-zinc-800 hover:shadow-md hover:shadow-zinc-400 dark:hover:shadow-zinc-700">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 transition duration-75 text-zinc-700 dark:text-zinc-200 group-hover:text-black dark:group-hover:text-white">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                         </svg>
@@ -45,7 +45,22 @@
         <div class="w-full h-full p-4 overflow-hidden" v-if="selectedPresentation != undefined" >
             <!--button @click="send">TitleScreen!!!!!!!!!</button-->
             <div class="flex flex-row">
-                <h1  class="sm:text-2xl md:text-3xl lg:text-4xl font-medium text-zinc-800 dark:text-zinc-100">{{selectedPresentation.name}}</h1>
+                <button @click="()=>{editablePresentation = !editablePresentation}"
+                class="aspect-square p-2 rounded-lg transition duration-75  hover:shadow-md hover:shadow-zinc-400 dark:hover:shadow-zinc-700 mr-2"
+                :class="[{'hover:bg-gray-100 dark:hover:bg-zinc-800' : !editablePresentation, 'bg-bluejay-600 hover:bg-bluejay-500' : editablePresentation}]"
+                >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                    class="w-6 h-6 " 
+                    :class="[{'text-black dark:text-white' : !editablePresentation, 'text-white' : editablePresentation}]"
+                    >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
+                    </svg>
+                </button>
+
+                <h1 :class="[{'hidden': editablePresentation}]" class="sm:text-2xl md:text-3xl lg:text-4xl font-medium text-zinc-800 dark:text-zinc-100">{{selectedPresentation.name}}</h1>
+                <input v-model="selectedPresentation.name" type="text" :class="[{'hidden': !editablePresentation}]" class="block w-full sm:text-2xl md:text-3xl lg:text-4xl font-medium text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600"/>
+            
                 <span class="grow"></span>
                 <button @click="newSlide" class="p-2 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-zinc-800 hover:shadow-md hover:shadow-zinc-400 dark:hover:shadow-zinc-700">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 transition duration-300 text-zinc-700 dark:text-zinc-200 group-hover:text-black dark:group-hover:text-white">
@@ -71,7 +86,8 @@ export default {
             config: null,
             presentations: [],
             _createPresentationToggle: false,
-            newPresentationName: ""
+            newPresentationName: "",
+            editablePresentation: false
         }
     },
     computed: {
@@ -80,13 +96,24 @@ export default {
         }
     },
     methods: {
-        newSlide(){
+        newPresentation(){
             this.presentations.push({
                 name: this.newPresentationName,
                 slides: []
             })
             this.newPresentationName = ""
             this._createPresentationToggle = !this._createPresentationToggle
+        },
+        newSlide(){
+            this.selectedPresentation.slides.push({
+                id: this.selectedPresentation.slides.lenght,
+                title: 'Title',
+                type: 'TitleView',
+                data: {
+                    title: 'Something',
+                    subTitle: 'What is it going'
+                }
+            })
         },
         selectPresentation(presentation){
             this.presentations.forEach(p => p.selected == true ? p.selected = false : null)

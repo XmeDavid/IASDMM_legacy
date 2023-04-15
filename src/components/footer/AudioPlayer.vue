@@ -76,7 +76,6 @@ export default {
     loadMusic(){
       let _music = this.musicList.find(element => element.id == this.selectedMusic)
       let musicURL = convertFileSrc(_music.path)
-      console.log(musicURL)
       this.music = new Howl({
         src: [musicURL],
         onend: this.next
@@ -112,7 +111,7 @@ export default {
     },
     next(){
       this.selectedMusic++
-      if(this.selectedMusic == musicList.length){
+      if(this.selectedMusic == this.musicList.length){
         this.selectedMusic = 1
       }
       this.music.stop()
@@ -125,7 +124,7 @@ export default {
     previous(){
       this.selectedMusic--
       if(this.selectedMusic == 0){
-        this.selectedMusic = musicList.length
+        this.selectedMusic = this.musicList.length
       }
       this.music.stop()
       this.loadMusic()
@@ -162,8 +161,7 @@ export default {
       let _music = this.musicList.find(e => e.id == this.selectedMusic)
       if(_music == undefined || _music == null){
         return "Nothing Playing..."
-      } 
-      console.log(_music)
+      }
       return _music.name
     },
   },

@@ -30,7 +30,6 @@ export default {
         }
     },
     mounted(){
-        console.log("Hey")
         console.log(this.data)
     }
 }
