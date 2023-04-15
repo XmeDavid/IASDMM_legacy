@@ -58,7 +58,7 @@
                     </svg>
                 </button>
 
-                <h1 :class="[{'hidden': editablePresentation}]" class="sm:text-2xl md:text-3xl lg:text-4xl font-medium text-zinc-800 dark:text-zinc-100">{{selectedPresentation.name}}</h1>
+                <h1 :class="[{'hidden': editablePresentation}]" class="select-none sm:text-2xl md:text-3xl lg:text-4xl font-medium text-zinc-800 dark:text-zinc-100">{{selectedPresentation.name}}</h1>
                 <input v-model="selectedPresentation.name" type="text" :class="[{'hidden': !editablePresentation}]" class="block w-full sm:text-2xl md:text-3xl lg:text-4xl font-medium text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600"/>
             
                 <span class="grow"></span>
@@ -105,9 +105,11 @@ export default {
             this._createPresentationToggle = !this._createPresentationToggle
         },
         newSlide(){
+            let length = this.selectedPresentation.slides.length
+            console.log(length)
             this.selectedPresentation.slides.push({
-                id: this.selectedPresentation.slides.lenght,
-                title: 'Title',
+                id: length,
+                title: `Slide ${length + 1}`,
                 type: 'TitleView',
                 data: {
                     title: 'Something',

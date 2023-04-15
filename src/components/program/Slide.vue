@@ -1,16 +1,14 @@
 <template lang="">
     <div class="p-2 my-2 rounded-lg border-2 transition-all duration-300">
         <div class="flex flex-row items-center p-2">
-            <h1 :class="[{'hidden': editable}]" class="text-2xl text-center">{{slide.title}}</h1>
-            <input type="text" :class="[{'hidden': !editable}]" class="block w-full text-2xl text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600" v-model="slide.title"/>
+            <h1 :class="[{'hidden': editable}]" class="select-none text-2xl text-center">{{slide.title}}</h1>
+            <input type="text" :class="[{'hidden': !editable}]" class="mr-2 block w-full text-2xl text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600" v-model="slide.title"/>
             <div class="grow"></div>
 
-            <div @click="() => typeEditable = !typeEditable" class="group relative p-2 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-zinc-800 hover:shadow-md hover:shadow-zinc-400 dark:hover:shadow-zinc-700">
-                <input :value="getName(slide.type)" disabled :class="[`w-${wSize}`]" class="appearance-none bg-transparent text-center font-medium transition duration-300 text-zinc-700 dark:text-zinc-200 group-hover:text-black dark:group-hover:text-white">
-                <div class="hidden group-hover:block py-2 px-3 w-32 absolute rounded-lg border transition duration-75 bg-zinc-100 hover:shadow-md hover:shadow-zinc-400 dark:hover:shadow-zinc-700">
-                    <p v-for="(item, index) in slideTypes" class="p-1 whitespace-nowrap font-normal text-center hover:drop-shadow hover:font-bold rounded-lg">
-                        {{ item.name }}
-                    </p>
+            <div @click="() => typeEditable = !typeEditable" class="group relative p-2 rounded-lg transition duration-100 hover:bg-gray-100 dark:hover:bg-zinc-800 hover:shadow-md hover:shadow-zinc-400 dark:hover:shadow-zinc-700">
+                <h2 disabled class="select-none w-32 text-ellipsis appearance-none bg-transparent text-center font-medium transition duration-300 text-zinc-700 dark:text-zinc-200 group-hover:text-black dark:group-hover:text-white"> {{ getName(slide.type) }} </h2>
+                <div class="hidden group-hover:block py-2 px-3 w-32 absolute rounded-lg border transition duration-100 bg-zinc-100 hover:shadow-md hover:shadow-zinc-400 dark:hover:shadow-zinc-700">
+                <h3 @click="()=>{slide.type = item.slideType}" v-for="(item, index) in slideTypes" class="select-none p-1 whitespace-nowrap font-normal text-center hover:drop-shadow hover:font-bold rounded-lg"> {{ item.name }} </h3>
                 </div>
             </div>
 
@@ -54,7 +52,7 @@
     </div>
 </template>
 <script>//{'h-0': !editable}, {editableSize: editable}
-import editableSizes from './editables/editableSizes.json'
+import editableSizes from './editables/slideTypesInfo.json'
 import OldHymnalEdit from './editables/OldHymnalEdit.vue'
 import { invoke } from '@tauri-apps/api/tauri'
 export default {
@@ -105,9 +103,6 @@ export default {
                 return editableSizes.find(slide => slide.slideType === this.slide.type).h
             }
             return '0'
-        },
-        wSize(){
-            return editableSizes.find(slide => slide.slideType === this.slide.type).w
         },
         slideTypes(){
             return editableSizes
