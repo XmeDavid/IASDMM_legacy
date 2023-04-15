@@ -41,7 +41,6 @@
 
 <script>
 import {Howl, Howler} from 'howler';
-import index from "../../assets/music/background/index.json"
 import { readDir, readTextFile, BaseDirectory } from '@tauri-apps/api/fs';
 import { convertFileSrc } from '@tauri-apps/api/tauri';
 import { emit, listen } from '@tauri-apps/api/event'
@@ -113,7 +112,7 @@ export default {
     },
     next(){
       this.selectedMusic++
-      if(this.selectedMusic == index.length){
+      if(this.selectedMusic == musicList.length){
         this.selectedMusic = 1
       }
       this.music.stop()
@@ -126,7 +125,7 @@ export default {
     previous(){
       this.selectedMusic--
       if(this.selectedMusic == 0){
-        this.selectedMusic = index.length
+        this.selectedMusic = musicList.length
       }
       this.music.stop()
       this.loadMusic()
