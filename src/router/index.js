@@ -7,6 +7,7 @@ import HymnOld from "../components/old_hymnal/HymnOld.vue";
 import HymnNew from "../components/new_hymnal/HymnNew.vue";
 import OldHymnalView from "../components/presentation_views/OldHymnalView.vue";
 import TitleView from "../components/presentation_views/TitleView.vue";
+import ImageView from "../components/presentation_views/ImageView.vue";
 const routes = [
     {
       path: '/',
@@ -47,6 +48,10 @@ const routes = [
       path: '/presentation_view/old_hymnal',
       name: 'OldHymnalView',
       component: OldHymnalView,
+    },{
+      path: '/presentation_view/imgae',
+      name: 'ImageView',
+      component: ImageView,
     }
 ];
 

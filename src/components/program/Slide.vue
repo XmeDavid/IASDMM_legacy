@@ -48,17 +48,20 @@
                 </button>
             </div>
         </div>
-        <OldHymnalEdit :class="[`transition-max  duration-300 overflow-hidden h-${hSize}`]" :data="slide.data"/>
+        <TitleEdit v-if="slide.type == 'TitleView'" :class="[`transition-max  duration-300 overflow-hidden h-${hSize}`]" :data="slide.data"/>
+        <ImageEdit v-if="slide.type == 'ImageView'" :class="[`transition-max  duration-300 overflow-hidden h-${hSize}`]" :data="slide.data"/>
     </div>
 </template>
 <script>//{'h-0': !editable}, {editableSize: editable}
 import editableSizes from './editables/slideTypesInfo.json'
-import OldHymnalEdit from './editables/OldHymnalEdit.vue'
+import TitleEdit from './editables/TitleEdit.vue'
+import ImageEdit from './editables/ImageEdit.vue'
 import { invoke } from '@tauri-apps/api/tauri'
 export default {
     name: "Slide",
     components: {
-        OldHymnalEdit
+        TitleEdit,
+        ImageEdit
     },
     props: {
         slide:{

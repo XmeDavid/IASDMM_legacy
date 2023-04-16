@@ -25,8 +25,6 @@ export default {
     },
     data(){
         return {
-            title: "Hey",
-            subtitle: "Onit"
         }
     },
     mounted(){

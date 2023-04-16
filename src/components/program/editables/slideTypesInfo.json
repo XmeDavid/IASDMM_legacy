@@ -1,4 +1,5 @@
 [
     {"name": "Title Slide", "slideType": "TitleView", "h": "16"},
+    {"name": "Image Slide", "slideType": "ImageView", "h": "16"},
     {"name": "Video Slide", "slideType": "VideoView", "h": "32"}
 ]
