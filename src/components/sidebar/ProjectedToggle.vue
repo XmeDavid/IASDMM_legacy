@@ -28,30 +28,13 @@ import { WebviewWindow } from '@tauri-apps/api/window'
 export default {
   data() {
     return {
+      monitorsProjecting: [],
       isProjected: false
     };
   },
   mounted() {
   },
   methods: {
-    async getMonitors() {
-      var id = -1
-      return (await availableMonitors()).map(monitor => {
-        id += 1
-        return {
-          id: id,
-          name: monitor.name,
-          scaleFactor: monitor.scaleFactor,
-          size: monitor.size,
-          position: monitor.position,
-          isProjector: false
-        }
-      })
-    },
-    async getMonitorsConfig(){
-      const config = JSON.parse(await readTextFile('app.conf', { dir: BaseDirectory.AppData }))
-      return config.previousMonitors
-    },
     async toggleWindows(){
       if(this.isProjected){
         this.closeWindows()
@@ -59,23 +42,45 @@ export default {
         this.projectWindows()
       }
     },
-    async closeWindows(){
-      const monitors = await this.getMonitors()
-      monitors.forEach(monitor => {
-        invoke('close_window', { windowLabel: `external_${monitor.id}` })
-      })
-      this.isProjected = false
-    },
     async projectWindows(){
-      const monitors = await this.getMonitors()
-      const monitorsConfig = await this.getMonitorsConfig()
+      //Get monitor config previously saved to disk
+      const monitorsConfig = JSON.parse(await readTextFile('app.conf', { dir: BaseDirectory.AppData })).monitors
+
+      //Get currently avalible monitors
+      const regex = /[^a-zA-Z0-9]+/g; //Regex to make sure the labels created with the monitor name are valid
+      const monitors = (await availableMonitors()).map(monitor => {
+        return {
+            name: monitor.name.replaceAll(regex,''),
+            scaleFactor: monitor.scaleFactor,
+            size: monitor.size,
+            position: monitor.position,
+            isProjector: false,
+            isFullscreen: false,
+          }
+      });
+      /**
+       * Explanation for the following code, its indented the same way the code bellow:
+       * For each avalible monitor
+       *    Check if that monitor is configured
+       *    If it is,
+       *        And the configuration is to be projector, create window
+       *        Save that monitor label to delete close the window later
+       *        Set isProjected to true
+       */
       monitors.forEach(monitor => {
         var config = monitorsConfig.filter(monitorConfig => monitorConfig.name == monitor.name)[0]
         if(config){
-          config.isProjector ? invoke('create_window', { windowLabel: `external_${config.id}`, title: "Projector Window", url: "/#/presentation_view", fullscreen: config.isFullscreen, x: config.position.x, y: config.position.y }) : null
+          config.isProjector ? invoke('create_window', { windowLabel: `external_${config.name}`, title: "Projector Window", url: "/#/presentation_view", fullscreen: true, x: config.position.x, y: config.position.y }) : null
+          this.monitorsProjecting.push(`external_${config.name}`)
+          this.isProjected = true //at least one monitor needs to be projected for the toggle to work, else, nothing should happen and user should go to settings
         }
       })
-      this.isProjected = true
+    },
+    async closeWindows(){
+      this.monitorsProjecting.forEach(label => {
+        invoke('close_window', { windowLabel: label })
+      })
+      this.isProjected = false
     }
   },
 };

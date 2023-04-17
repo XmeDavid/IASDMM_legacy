@@ -126,7 +126,11 @@ export default {
         },
         async load(){
             this.config = JSON.parse(await readTextFile('app.conf', { dir: BaseDirectory.AppData }))
-            this.presentations = this.config.presentations
+            if(this.config.presentations){
+                this.presentations = this.config.presentations
+            }else{
+                this.config.presentations = []
+            }
         },
         async save(){
             this.config.presentations = this.presentations

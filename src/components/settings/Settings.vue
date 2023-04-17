@@ -3,11 +3,11 @@
         <div class="w-full flex flex-row">
             <h1 class="text-2xl text-zinc-800 dark:text-zinc-200 select-none">Settings</h1>
             <hr>
-            <DisplaySettings ref="displaySettingsRef"/>
+            <DisplaySettings :config="config"/>
             <hr>
         </div>
         <div class="w-full flex flex-col">
-            <MusicSettings ref="musicSettingsRef"/>
+            <MusicSettings :config="config"/>
             <div class="grow"></div>
             <div class="flex flex-row">
                 <div class="grow"></div>
@@ -19,7 +19,8 @@
 <script>
 import DisplaySettings from "./DisplaySettings.vue"
 import MusicSettings from "./MusicSettings.vue";
-import {ref} from 'vue';    
+import { emit, listen } from '@tauri-apps/api/event'
+import { writeTextFile, readTextFile, BaseDirectory } from '@tauri-apps/api/fs';
 export default {
     name: "Settings",
     components: {
@@ -28,14 +29,31 @@ export default {
     },
     data(){
         return {
+            config: {backgroundMusicPath: '', monitors: []},
         }
     },
     methods: {
-        save(){
-            this.$refs.displaySettingsRef.save()
-            this.$refs.musicSettingsRef.save()
+        async load(){
+            this.config = JSON.parse(await readTextFile('app.conf', { dir: BaseDirectory.AppData }))
+            if(!this.config.backgroundMusicPath){
+                this.config.backgroundMusicPath = ''
+            }
+            if(!this.config.monitors){
+                this.config.monitors = []
+            }
+        },
+        async save(){
+            console.log(this.config)
+            let json_str = JSON.stringify(this.config)
+            await writeTextFile('app.conf', json_str, { dir: BaseDirectory.AppData })
+            emit('reload-music', {
+                reload: true,
+            })
         }
     },
+    created(){
+        this.load()
+    }
 }
 </script>
 <style>

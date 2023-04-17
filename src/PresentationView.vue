@@ -15,13 +15,11 @@ export default {
     methods: {
         async listen() {
             this.listener = await listen('presentation-data', (event) => {
-                let data = JSON.parse(event.payload)
-                //console.log(data.data)
+                let data = JSON.parse(event.payload.data)
                 this.$router.push({
                     name: data.routeName,
                     params: {data: JSON.stringify(data.data)}
                 })
-                
             })
         }
     },
