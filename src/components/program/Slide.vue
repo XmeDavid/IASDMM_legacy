@@ -56,7 +56,7 @@
 import editableSizes from './editables/slideTypesInfo.json'
 import TitleEdit from './editables/TitleEdit.vue'
 import ImageEdit from './editables/ImageEdit.vue'
-import { invoke } from '@tauri-apps/api/tauri'
+import { emit, listen } from '@tauri-apps/api/event'
 export default {
     name: "Slide",
     components: {
@@ -85,10 +85,10 @@ export default {
             this.presenting ? this.sendToPresenter() : null
         },
         async sendToPresenter() {
-            await invoke('send_data', { data: JSON.stringify({
+            emit('presentation-data', { data: JSON.stringify({
                 routeName: this.slide.type,
                 data: this.slide.data
-            }), windowLabel: 'external_0'})
+            })})
         },
         moveUp(){ ///Emit event to parent, telling them to move this slide up
 
