@@ -22,10 +22,6 @@ export default {
             required: true,
         }
     },
-    data(){
-        return {
-        }
-    },
     methods:{
         async selectPath(){
             const selected = await open({

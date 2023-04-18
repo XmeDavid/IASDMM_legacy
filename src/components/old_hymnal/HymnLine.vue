@@ -14,30 +14,11 @@
 </template>
 
 <script>
-import { availableMonitors } from '@tauri-apps/api/window';
-import { invoke } from '@tauri-apps/api/tauri'
-import { appWindow, WebviewWindow, LogicalPosition  } from '@tauri-apps/api/window'
-import { emit, listen } from '@tauri-apps/api/event'
 export default {
     props: {
         hymn:{
             type: Object,
             required: true,
-        }
-    },
-    methods:{
-        run(){/*
-            var test = JSON.stringify(this.hymn)
-            var encoded = encodeURIComponent(test)
-            var webview = WebviewWindow.getByLabel('hinario');
-            if(webview != null){ return }
-            webview = new WebviewWindow('hinario', {
-                url: `/#/isSecHinario?${encoded}`,
-            })*/
-            console.log("Run")
-        },
-        options(){
-            console.log("Options")
         }
     }
 }

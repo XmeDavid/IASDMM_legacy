@@ -74,9 +74,8 @@
     </div>
 </template>
 <script>
-import Slide from "./Slide.vue"
+import Slide from "./Slide.vue";
 import { writeTextFile, readTextFile, BaseDirectory } from '@tauri-apps/api/fs';
-import { invoke } from '@tauri-apps/api/tauri'
 export default {
     components: {
         Slide

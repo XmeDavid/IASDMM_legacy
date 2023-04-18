@@ -19,7 +19,7 @@
 <script>
 import DisplaySettings from "./DisplaySettings.vue"
 import MusicSettings from "./MusicSettings.vue";
-import { emit, listen } from '@tauri-apps/api/event'
+import { emit } from '@tauri-apps/api/event'
 import { writeTextFile, readTextFile, BaseDirectory } from '@tauri-apps/api/fs';
 export default {
     name: "Settings",

@@ -96,9 +96,8 @@
 import {Howl, Howler} from 'howler';
 import { readDir, readTextFile, BaseDirectory } from '@tauri-apps/api/fs';
 import { convertFileSrc } from '@tauri-apps/api/tauri';
-import { emit, listen } from '@tauri-apps/api/event'
+import { listen } from '@tauri-apps/api/event'
 import allowedExtensions from './allowedMusicExtensions.json'
-import { appWindow } from "@tauri-apps/api/window";
 export default {
   name: "AudioPlayer",
   data() {
