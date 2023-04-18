@@ -1,5 +1,5 @@
 <template lang="">
-    <div class="p-2 my-2 rounded-lg border-2 transition-all duration-300">
+    <div class="p-2 my-2 rounded-lg border-2 transition-all duration-100 border-zinc-300 dark:border-zinc-700">
         <div class="flex flex-row items-center p-2">
             <h1 :class="[{'hidden': editable}]" class="select-none text-2xl text-center">{{slide.title}}</h1>
             <input type="text" :class="[{'hidden': !editable}]" class="mr-2 block w-full text-2xl text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600" v-model="slide.title"/>
