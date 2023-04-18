@@ -29,7 +29,7 @@
               <line x1="5" y1="19" x2="5" y2="5"></line>
             </svg>
           </button>
-          <button @click="playPause"
+          <button @click="()=>isPlaying=!isPlaying"
             class="rounded-full w-10 h-10 flex items-center justify-center pl-1 ring-2  focus:outline-none ring-gray-100 hover:ring-gray-200 text-zinc-700 hover:text-black"
           >
             <svg v-if="!isPlaying"
@@ -113,6 +113,7 @@ export default {
       index: 0,
       reloadListener: null,
       updaterUI: null,
+      isPlaying: false
     };
   },
   methods: {
@@ -149,25 +150,13 @@ export default {
       }
       this.music = new Howl({
         src: [music.url],
-        autoplay: true,
+        autoplay: false,
         loop: true,
         volume: 0.1,
         onend: function() {
           this.next();
         },
       });
-    },
-    playPause() {
-      if(!this.music){
-        this.playMusic(this.musicList[this.index])
-        this.music.play()
-        return
-      }
-      if (this.music.playing()) {
-        this.music.pause();
-      } else {
-        this.music.play();
-      }
     },
     previous() {
       if(this.index == 0){
@@ -226,12 +215,6 @@ export default {
     }
   },
   computed: {
-    isPlaying() {
-      if(this.music){
-        return this.music.playing();
-      }
-      return false;
-    },
     currentMusic() {
       if(this.musicList.length > 0){
         return this.musicList[this.index];
@@ -242,6 +225,18 @@ export default {
     },
   },
   watch: {
+    'isPlaying': function(isPlaying){
+      if(!this.music){
+        this.playMusic(this.musicList[this.index])
+        this.music.play()
+        return
+      }
+      if(isPlaying){
+        this.music.play()
+      }else{
+        this.music.pause()
+      }
+    },
     'index': function (index) {
       this.playMusic(this.musicList[index])
     },
