@@ -7,8 +7,8 @@
     "withGlobalTauri": false
   },
   "package": {
-    "productName": "iasd_mm",
-    "version": "0.0.0"
+    "productName": "IASD Multimedia Management",
+    "version": "0.0.1"
   },
   "tauri": {
     "allowlist": {
@@ -51,7 +51,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.dev",
+      "identifier": "pt.iasd.mm",
       "targets": "all",
       "windows": {
         "webviewInstallMode": {
