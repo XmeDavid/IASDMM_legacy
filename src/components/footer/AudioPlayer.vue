@@ -150,7 +150,7 @@ export default {
       }
       this.music = new Howl({
         src: [music.url],
-        autoplay: false,
+        autoplay: this.isPlaying,
         loop: true,
         volume: 0.1,
         onend: function() {
@@ -228,8 +228,6 @@ export default {
     'isPlaying': function(isPlaying){
       if(!this.music){
         this.playMusic(this.musicList[this.index])
-        this.music.play()
-        return
       }
       if(isPlaying){
         this.music.play()
@@ -238,7 +236,8 @@ export default {
       }
     },
     'index': function (index) {
-      this.playMusic(this.musicList[index])
+      this.isPlaying = true
+      this.playMusic(this.musicList[index],this.isPlaying)
     },
   },
   mounted() {
