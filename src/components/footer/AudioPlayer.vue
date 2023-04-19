@@ -152,10 +152,8 @@ export default {
         src: [music.url],
         autoplay: this.isPlaying,
         loop: true,
-        volume: 0.1,
-        onend: function() {
-          this.next();
-        },
+        volume: this.volume / 100,
+        onend: this.next
       });
     },
     previous() {
