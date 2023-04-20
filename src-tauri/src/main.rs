@@ -4,15 +4,17 @@
 use tauri::Manager;
 
 #[tauri::command]
-async fn create_window(app: tauri::AppHandle, window_label: &str, title: &str, url: &str, fullscreen: bool, x: f64, y: f64) -> tauri::Result<()> {
+async fn create_window(app: tauri::AppHandle, window_label: &str, title: &str, url: &str, _fullscreen: bool, size_x:f64, size_y:f64,  x: f64, y: f64) -> tauri::Result<()> {
     tauri::WindowBuilder::new(
         &app,
         window_label,
         tauri::WindowUrl::App(url.into())
       )
       .title(title)
+      .decorations(false)
+      .min_inner_size(size_x,size_y)
       .position(x,y)
-      .fullscreen(fullscreen)
+      .fullscreen(false)
       .focused(false)
       .build()
       .expect("failed to build window");

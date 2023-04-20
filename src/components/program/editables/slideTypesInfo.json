@@ -1,5 +1,6 @@
 [
     {"name": "Title Slide", "slideType": "TitleView", "h": "16"},
     {"name": "Image Slide", "slideType": "ImageView", "h": "16"},
-    {"name": "Video Slide", "slideType": "VideoView", "h": "32"}
+    {"name": "Video Slide", "slideType": "VideoView", "h": "32"},
+    {"name": "Logo Over Text", "slideType": "LogoOverTextView", "h": "48"}
 ]

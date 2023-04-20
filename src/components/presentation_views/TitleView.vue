@@ -5,7 +5,7 @@
         <p :style="{ 'font-size' : textRatio*1.25 + 'px' }" style="writing-mode: vertical-rl;" class="whitespace-nowrap">{{ getDate() }}</p>
       </div>
         
-      <div class="">
+      <div class="pl-32">
         <h1 :style="{ 'font-size' : textRatio + 'rem', 'line-height': textRatio + 'rem' }">{{ data.title }}</h1>
         <h3 :style="{ 'font-size' : textRatio/4 + 'rem', 'line-height': textRatio/4 + 'rem' }"> {{ data.subTitle }}</h3>
       </div>
@@ -28,10 +28,11 @@
 </template>
 
 <script>
-//class="drop-shadow-[0px_0px_100px_rgba(0,0,0,1)]"
+import { emit, listen } from '@tauri-apps/api/event'
 export default {
   data() {
     return {
+      listener: null,
       data: null,
       textRatio: window.innerWidth / 100,
     };
@@ -47,9 +48,19 @@ export default {
         let month =new Intl.DateTimeFormat("pt-PT", options).format(date);
         let year = date.getFullYear();
         return `${day} de ${month} de ${year}`
+    },
+    async listen() {
+        this.listener = await listen('presentation-data', (event) => {
+            let data = JSON.parse(event.payload.data)
+            this.$router.push({
+                name: data.routeName,
+                params: {data: JSON.stringify(data.data)}
+            })
+        })
     }
   },
   mounted() {
+    this.listen()
     this.$nextTick(() => {
       window.addEventListener('resize', this.onResize);
     })

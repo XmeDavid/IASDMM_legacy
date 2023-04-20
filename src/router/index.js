@@ -8,6 +8,7 @@ import HymnNew from "../components/new_hymnal/HymnNew.vue";
 import OldHymnalView from "../components/presentation_views/OldHymnalView.vue";
 import TitleView from "../components/presentation_views/TitleView.vue";
 import ImageView from "../components/presentation_views/ImageView.vue";
+import LogoOverTextView from "../components/presentation_views/LogoOverTextView.vue";
 const routes = [
     {
       path: '/',
@@ -52,6 +53,11 @@ const routes = [
       path: '/presentation_view/imgae',
       name: 'ImageView',
       component: ImageView,
+    },
+    {
+      path: '/presentation_view/logo_over_text',
+      name: 'LogoOverTextView',
+      component: LogoOverTextView,
     }
 ];
 

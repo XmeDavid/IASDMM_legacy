@@ -5,11 +5,27 @@
     </div>
 </template>
 <script>
+import { emit, listen } from '@tauri-apps/api/event'
 export default {
     data() {
         return {
-            data: null
+            data: null,
+            listener: null
         }
+    },
+    methods: {
+        async listen() {
+            this.listener = await listen('presentation-data', (event) => {
+                let data = JSON.parse(event.payload.data)
+                this.$router.push({
+                    name: data.routeName,
+                    params: {data: JSON.stringify(data.data)}
+                })
+            })
+        }
+    },
+    mounted() {
+        this.listen()
     },
     created() {
         this.data = JSON.parse(this.$router.currentRoute.value.params.data)

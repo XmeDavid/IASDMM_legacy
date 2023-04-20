@@ -50,18 +50,22 @@
         </div>
         <TitleEdit v-if="slide.type == 'TitleView'" :class="[`transition-max  duration-300 overflow-hidden h-${hSize}`]" :data="slide.data"/>
         <ImageEdit v-if="slide.type == 'ImageView'" :class="[`transition-max  duration-300 overflow-hidden h-${hSize}`]" :data="slide.data"/>
+        <LogoOverTextEdit v-if="slide.type == 'LogoOverTextView'" :class="[`transition-max  duration-300 overflow-hidden h-${hSize}`]" :data="slide.data"/>
     </div>
 </template>
 <script>//{'h-0': !editable}, {editableSize: editable}
 import editableSizes from './editables/slideTypesInfo.json'
 import TitleEdit from './editables/TitleEdit.vue'
 import ImageEdit from './editables/ImageEdit.vue'
+import LogoOverTextEdit from './editables/LogoOverTextEdit.vue'
+
 import { emit, listen } from '@tauri-apps/api/event'
-export default {
+export default { 
     name: "Slide",
     components: {
         TitleEdit,
-        ImageEdit
+        ImageEdit,
+        LogoOverTextEdit
     },
     props: {
         slide:{
@@ -85,6 +89,7 @@ export default {
             this.presenting ? this.sendToPresenter() : null
         },
         async sendToPresenter() {
+            console.log('Sending to presenter')
             emit('presentation-data', { data: JSON.stringify({
                 routeName: this.slide.type,
                 data: this.slide.data

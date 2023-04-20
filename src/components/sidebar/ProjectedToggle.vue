@@ -70,7 +70,7 @@ export default {
       monitors.forEach(monitor => {
         var config = monitorsConfig.filter(monitorConfig => monitorConfig.name == monitor.name)[0]
         if(config){
-          config.isProjector ? invoke('create_window', { windowLabel: `external_${config.name}`, title: "Projector Window", url: "/#/presentation_view", fullscreen: true, x: config.position.x, y: config.position.y }) : null
+          config.isProjector ? invoke('create_window', { windowLabel: `external_${config.name}`, title: "Projector Window", url: "/#/presentation_view", fullscreen: true, sizeX: config.size.width,  sizeY: config.size.height,  x: config.position.x, y: config.position.y }) : null
           this.monitorsProjecting.push(`external_${config.name}`)
           this.isProjected = true //at least one monitor needs to be projected for the toggle to work, else, nothing should happen and user should go to settings
         }

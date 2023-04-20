@@ -1,5 +1,6 @@
 <template>
-    <div class="w-full h-full grid place-items-center p-8 bg-cover bg-[url('src/assets/img/old_hymnal_bg.png')]">
+  <div class="w-full h-full relative">
+    <div class="absolute top-0 z-30 w-full h-full grid place-items-center p-8 bg-cover" :class="[background]">
             <div class="flex flex-col h-[74vh] w-[90%] border rounded-xl bg-zinc-200 dark:bg-black bg-opacity-40 dark:bg-opacity-40">
                 <div class="flex flex-row h-16">
                     <div class="p-2 m-2">
@@ -22,6 +23,8 @@
                 </div>
             </div>
     </div>
+    <img src="../../assets/img/old_hymnal_bg.png" alt="Presentation Image" class="z-0 absolute top-0 object-cover w-full h-full">
+  </div>
 </template>
 <script>
 import HymnLine from './HymnLine.vue'
@@ -54,7 +57,7 @@ export default {
         return indexFile.filter((element)=>{
           return element.number == this.userInput || element._id == this.userInput || this.hasWords(element.name.toLowerCase())
         })
-      }
+      },
     },
 }
 </script>
